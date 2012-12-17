@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Monitoreo" table="monitoreo">
+        <id name="idmonitoreo" type="int">
+            <column name="idmonitoreo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="mecanica" class="com.generado.Mecanica" fetch="select">
+            <column name="codmecanica" length="5" />
+        </many-to-one>
+        <many-to-one name="unidad" class="com.generado.Unidad" fetch="select">
+            <column name="idunidad" />
+        </many-to-one>
+        <many-to-one name="estadoservicio" class="com.generado.Estadoservicio" fetch="select">
+            <column name="codservicio" length="5" />
+        </many-to-one>
+        <many-to-one name="estadoequipo" class="com.generado.Estadoequipo" fetch="select">
+            <column name="codequipo" length="5" />
+        </many-to-one>
+        <many-to-one name="tipotrama" class="com.generado.Tipotrama" fetch="select">
+            <column name="codtiptrama" length="5" />
+        </many-to-one>
+        <many-to-one name="estadocarrera" class="com.generado.Estadocarrera" fetch="select">
+            <column name="codcarrera" length="5" />
+        </many-to-one>
+        <property name="idcooperativa" type="int">
+            <column name="idcooperativa" not-null="true" />
+        </property>
+        <property name="codigounidad" type="java.lang.Integer">
+            <column name="codigounidad" />
+        </property>
+        <property name="fechahora" type="timestamp">
+            <column name="fechahora" length="22" />
+        </property>
+        <property name="horatrama" type="java.lang.Integer">
+            <column name="horatrama" />
+        </property>
+        <property name="latitud" type="string">
+            <column name="latitud" length="20" />
+        </property>
+        <property name="longitud" type="string">
+            <column name="longitud" length="20" />
+        </property>
+        <property name="direccionip" type="string">
+            <column name="direccionip" length="20" />
+        </property>
+        <property name="velocidad" type="java.lang.Double">
+            <column name="velocidad" precision="17" scale="17" />
+        </property>
+        <property name="idptocontrol" type="java.lang.Integer">
+            <column name="idptocontrol" />
+        </property>
+        <property name="estadoPuertas" type="string">
+            <column name="estado_puertas" length="5" />
+        </property>
+        <property name="distInstalacion" type="java.lang.Double">
+            <column name="dist_instalacion" precision="17" scale="17" />
+        </property>
+        <property name="distRuta" type="java.lang.Double">
+            <column name="dist_ruta" precision="17" scale="17" />
+        </property>
+        <property name="pasajEntran" type="java.lang.Integer">
+            <column name="pasaj_entran" />
+        </property>
+        <property name="pasajSalen" type="java.lang.Integer">
+            <column name="pasaj_salen" />
+        </property>
+        <property name="pasajBordo" type="java.lang.Integer">
+            <column name="pasaj_bordo" />
+        </property>
+        <property name="trama" type="string">
+            <column name="trama" />
+        </property>
+        <property name="fecharegistro" type="timestamp">
+            <column name="fecharegistro" length="22" />
+        </property>
+        <property name="rumbo" type="string">
+            <column name="rumbo" />
+        </property>
+        <property name="variacion" type="string">
+            <column name="variacion" />
+        </property>
+        <property name="satelites" type="java.lang.Integer">
+            <column name="satelites" />
+        </property>
+        <property name="odometro" type="java.lang.Double">
+            <column name="odometro" precision="17" scale="17" />
+        </property>
+        <set name="despachosForUltimoregdesp" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ultimoregdesp" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="despachosForError" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="error" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="despachosForAsignacion" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="asignacion" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="despachosForAborto" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="aborto" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="despachosForLibre" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="libre" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="interseccions" table="callemonitoreo" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="monitoreo_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.generado.Interseccion">
+                <column name="interseccion_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="despachosForMasinfo" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="masinfo" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="recorridos" table="recorrido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="monitoreo" />
+            </key>
+            <one-to-many class="com.generado.Recorrido" />
+        </set>
+        <set name="despachosForUltimoreg" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ultimoreg" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="despachosForCarrera" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="carrera" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="ultimoregistros" table="ultimoregistro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="monitoreo_id" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Ultimoregistro" />
+        </set>
+        <set name="despachosForAceptacion" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="aceptacion" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+    </class>
+</hibernate-mapping>

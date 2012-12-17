@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.ExtTranslations" table="ext_translations">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="locale" type="string">
+            <column name="locale" length="8" not-null="true" />
+        </property>
+        <property name="objectClass" type="string">
+            <column name="object_class" not-null="true" />
+        </property>
+        <property name="field" type="string">
+            <column name="field" length="32" not-null="true" />
+        </property>
+        <property name="foreignKey" type="string">
+            <column name="foreign_key" length="64" not-null="true" />
+        </property>
+        <property name="content" type="string">
+            <column name="content" />
+        </property>
+    </class>
+</hibernate-mapping>

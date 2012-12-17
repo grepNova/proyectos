@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Unidad" table="unidad">
+        <id name="idunidad" type="int">
+            <column name="idunidad" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="marca" class="com.generado.Marca" fetch="select">
+            <column name="marca" />
+        </many-to-one>
+        <many-to-one name="institucion" class="com.generado.Institucion" fetch="select">
+            <column name="institucion" />
+        </many-to-one>
+        <many-to-one name="tipo" class="com.generado.Tipo" fetch="select">
+            <column name="tipo" />
+        </many-to-one>
+        <many-to-one name="dispositivo" class="com.generado.Dispositivo" fetch="select">
+            <column name="dispositivo" unique="true" />
+        </many-to-one>
+        <many-to-one name="cooperativa" class="com.generado.Cooperativa" fetch="select">
+            <column name="idcooperativa" />
+        </many-to-one>
+        <many-to-one name="fosUser" class="com.generado.FosUser" fetch="select">
+            <column name="propietario" />
+        </many-to-one>
+        <property name="codigo" type="java.lang.Integer">
+            <column name="codigo" />
+        </property>
+        <property name="alias" type="string">
+            <column name="alias" />
+        </property>
+        <property name="codigomunicipal" type="string">
+            <column name="codigomunicipal" />
+        </property>
+        <property name="clase" type="string">
+            <column name="clase" />
+        </property>
+        <property name="aniofab" type="java.lang.Long">
+            <column name="aniofab" />
+        </property>
+        <property name="idpaisorigen" type="string">
+            <column name="idpaisorigen" />
+        </property>
+        <property name="nummotor" type="string">
+            <column name="nummotor" />
+        </property>
+        <property name="numchasis" type="string">
+            <column name="numchasis" />
+        </property>
+        <property name="color" type="string">
+            <column name="color" />
+        </property>
+        <property name="habilitado" type="java.lang.Boolean">
+            <column name="habilitado" />
+        </property>
+        <property name="idpropietario" type="java.lang.Long">
+            <column name="idpropietario" />
+        </property>
+        <property name="slug" type="string">
+            <column name="slug" length="128" not-null="true" unique="true" />
+        </property>
+        <property name="salt" type="string">
+            <column name="salt" />
+        </property>
+        <property name="hash" type="string">
+            <column name="hash" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="22" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="22" not-null="true" />
+        </property>
+        <property name="path" type="string">
+            <column name="path" />
+        </property>
+        <property name="pathvideo" type="string">
+            <column name="pathvideo" />
+        </property>
+        <property name="placa" type="string">
+            <column name="placa" />
+        </property>
+        <property name="modelo" type="string">
+            <column name="modelo" />
+        </property>
+        <property name="numdis" type="string">
+            <column name="numdis" />
+        </property>
+        <set name="mensajeses" table="mensajes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="unidad" />
+            </key>
+            <one-to-many class="com.generado.Mensajes" />
+        </set>
+        <set name="despachos" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="unidad" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="instalacions" table="instalacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idunidad" />
+            </key>
+            <one-to-many class="com.generado.Instalacion" />
+        </set>
+        <set name="monitoreos" table="monitoreo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idunidad" />
+            </key>
+            <one-to-many class="com.generado.Monitoreo" />
+        </set>
+    </class>
+</hibernate-mapping>

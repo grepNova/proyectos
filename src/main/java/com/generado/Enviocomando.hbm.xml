@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Enviocomando" table="enviocomando">
+        <id name="idmensaje" type="int">
+            <column name="idmensaje" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="comando" class="com.generado.Comando" fetch="select">
+            <column name="comando" />
+        </many-to-one>
+        <many-to-one name="tipocomunicacion" class="com.generado.Tipocomunicacion" fetch="select">
+            <column name="tipocomunicacion" />
+        </many-to-one>
+        <many-to-one name="tipodispositivo" class="com.generado.Tipodispositivo" fetch="select">
+            <column name="tipodispositivo" />
+        </many-to-one>
+        <property name="orden" type="java.lang.Integer">
+            <column name="orden" />
+        </property>
+        <property name="funcion" type="string">
+            <column name="funcion" />
+        </property>
+    </class>
+</hibernate-mapping>

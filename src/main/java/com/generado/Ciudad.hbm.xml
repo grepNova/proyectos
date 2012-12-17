@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Ciudad" table="ciudad">
+        <id name="codigo" type="int">
+            <column name="codigo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="provincia" class="com.generado.Provincia" fetch="select">
+            <column name="idprovincia" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" />
+        </property>
+        <set name="calles" table="calle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigciu" />
+            </key>
+            <one-to-many class="com.generado.Calle" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Tipotrama" table="tipotrama">
+        <id name="codigo" type="string">
+            <column name="codigo" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" />
+        </property>
+        <property name="alerta" type="java.lang.Boolean">
+            <column name="alerta" />
+        </property>
+        <property name="color" type="string">
+            <column name="color" />
+        </property>
+        <set name="monitoreos" table="monitoreo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codtiptrama" length="5" />
+            </key>
+            <one-to-many class="com.generado.Monitoreo" />
+        </set>
+    </class>
+</hibernate-mapping>

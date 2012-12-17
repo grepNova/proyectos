@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.MediaMedia" table="media__media">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="enabled" type="boolean">
+            <column name="enabled" not-null="true" />
+        </property>
+        <property name="providerName" type="string">
+            <column name="provider_name" not-null="true" />
+        </property>
+        <property name="providerStatus" type="int">
+            <column name="provider_status" not-null="true" />
+        </property>
+        <property name="providerReference" type="string">
+            <column name="provider_reference" not-null="true" />
+        </property>
+        <property name="providerMetadata" type="string">
+            <column name="provider_metadata" />
+        </property>
+        <property name="width" type="java.lang.Integer">
+            <column name="width" />
+        </property>
+        <property name="height" type="java.lang.Integer">
+            <column name="height" />
+        </property>
+        <property name="length" type="java.lang.Long">
+            <column name="length" precision="10" scale="0" />
+        </property>
+        <property name="contentType" type="string">
+            <column name="content_type" length="64" />
+        </property>
+        <property name="contentSize" type="java.lang.Integer">
+            <column name="content_size" />
+        </property>
+        <property name="copyright" type="string">
+            <column name="copyright" />
+        </property>
+        <property name="authorName" type="string">
+            <column name="author_name" />
+        </property>
+        <property name="context" type="string">
+            <column name="context" length="16" />
+        </property>
+        <property name="cdnIsFlushable" type="java.lang.Boolean">
+            <column name="cdn_is_flushable" />
+        </property>
+        <property name="cdnFlushAt" type="timestamp">
+            <column name="cdn_flush_at" length="22" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="22" not-null="true" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="22" not-null="true" />
+        </property>
+        <set name="mediaGalleryMedias" table="media__gallery_media" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="media_id" />
+            </key>
+            <one-to-many class="com.generado.MediaGalleryMedia" />
+        </set>
+    </class>
+</hibernate-mapping>

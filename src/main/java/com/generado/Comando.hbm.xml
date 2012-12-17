@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Comando" table="comando">
+        <id name="idcomando" type="int">
+            <column name="idcomando" />
+            <generator class="assigned" />
+        </id>
+        <property name="codigo" type="string">
+            <column name="codigo" length="100" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="100" />
+        </property>
+        <property name="detalleComando" type="string">
+            <column name="detalle_comando" />
+        </property>
+        <set name="enviocomandos" table="enviocomando" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="comando" />
+            </key>
+            <one-to-many class="com.generado.Enviocomando" />
+        </set>
+    </class>
+</hibernate-mapping>

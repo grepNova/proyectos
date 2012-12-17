@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Usuariotraspaso" table="usuariotraspaso">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="codigo" type="string">
+            <column name="codigo" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" />
+        </property>
+        <property name="nombreFin" type="string">
+            <column name="nombre_fin" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" />
+        </property>
+        <property name="prin" type="string">
+            <column name="prin" />
+        </property>
+        <property name="sec" type="string">
+            <column name="sec" />
+        </property>
+        <property name="adicional" type="string">
+            <column name="adicional" />
+        </property>
+        <property name="masinf" type="string">
+            <column name="masinf" />
+        </property>
+        <property name="sector" type="string">
+            <column name="sector" />
+        </property>
+    </class>
+</hibernate-mapping>

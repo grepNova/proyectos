@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Interseccion" table="interseccion">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="calleByCalleprin" class="com.generado.Calle" fetch="select">
+            <column name="calleprin" />
+        </many-to-one>
+        <many-to-one name="calleByCallesec" class="com.generado.Calle" fetch="select">
+            <column name="callesec" />
+        </many-to-one>
+        <property name="latitud" type="java.lang.Double">
+            <column name="latitud" precision="17" scale="17" />
+        </property>
+        <property name="longitud" type="java.lang.Double">
+            <column name="longitud" precision="17" scale="17" />
+        </property>
+        <set name="direccions" table="direccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="interseccion" />
+            </key>
+            <one-to-many class="com.generado.Direccion" />
+        </set>
+        <set name="monitoreos" table="callemonitoreo" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="interseccion_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.generado.Monitoreo">
+                <column name="monitoreo_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="despachos" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="interseccion" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="monitoreo">
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">mon2501</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://200.124.229.23:5432/mon2</property>
+        <property name="hibernate.connection.username">mon</property>
+        <property name="hibernate.default_catalog">pg_catalog</property>
+        <property name="hibernate.default_schema">public</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <mapping class="com.generado.Monitoreo" />
+        <mapping class="com.generado.Tipodispositivo" />
+        <mapping class="com.generado.ExtTranslations" />
+        <mapping class="com.generado.Unidadtraspaso" />
+        <mapping class="com.generado.Calle" />
+        <mapping class="com.generado.Instalacion" />
+        <mapping class="com.generado.Provincia" />
+        <mapping class="com.generado.MediaGalleryMedia" />
+        <mapping class="com.generado.Telefono" />
+        <mapping class="com.generado.Marca" />
+        <mapping class="com.generado.Direccion" />
+        <mapping class="com.generado.Comando" />
+        <mapping class="com.generado.Ciudad" />
+        <mapping class="com.generado.Institucion" />
+        <mapping class="com.generado.Tipocomunicacion" />
+        <mapping class="com.generado.FosUser" />
+        <mapping class="com.generado.Usuariotraspaso" />
+        <mapping class="com.generado.MediaGallery" />
+        <mapping class="com.generado.Unidad" />
+        <mapping class="com.generado.Tipo" />
+        <mapping class="com.generado.Tipotrama" />
+        <mapping class="com.generado.Mensajes" />
+        <mapping class="com.generado.MediaMedia" />
+        <mapping class="com.generado.Email" />
+        <mapping class="com.generado.Propietario" />
+        <mapping class="com.generado.FosGroup" />
+        <mapping class="com.generado.Estadocarrera" />
+        <mapping class="com.generado.ExtLogEntries" />
+        <mapping class="com.generado.Estadoservicio" />
+        <mapping class="com.generado.Estadoequipo" />
+        <mapping class="com.generado.Dispositivo" />
+        <mapping class="com.generado.Interseccion" />
+        <mapping class="com.generado.Operadora" />
+        <mapping class="com.generado.Recorrido" />
+        <mapping class="com.generado.Enviocomando" />
+        <mapping class="com.generado.Celular" />
+        <mapping class="com.generado.Despacho" />
+        <mapping class="com.generado.Mecanica" />
+        <mapping class="com.generado.Ultimoregistro" />
+        <mapping class="com.generado.Cooperativa" />
+        <mapping class="com.generado.Colas" />
+    </session-factory>
+</hibernate-configuration>

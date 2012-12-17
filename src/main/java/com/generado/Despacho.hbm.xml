@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Despacho" table="despacho">
+        <id name="iddespacho" type="int">
+            <column name="iddespacho" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="monitoreoByAceptacion" class="com.generado.Monitoreo" fetch="select">
+            <column name="aceptacion" unique="true" />
+        </many-to-one>
+        <many-to-one name="monitoreoByLibre" class="com.generado.Monitoreo" fetch="select">
+            <column name="libre" unique="true" />
+        </many-to-one>
+        <many-to-one name="monitoreoByMasinfo" class="com.generado.Monitoreo" fetch="select">
+            <column name="masinfo" unique="true" />
+        </many-to-one>
+        <many-to-one name="interseccion" class="com.generado.Interseccion" fetch="select">
+            <column name="interseccion" />
+        </many-to-one>
+        <many-to-one name="fosUserByUsuario" class="com.generado.FosUser" fetch="select">
+            <column name="usuario" />
+        </many-to-one>
+        <many-to-one name="monitoreoByUltimoregdesp" class="com.generado.Monitoreo" fetch="select">
+            <column name="ultimoregdesp" unique="true" />
+        </many-to-one>
+        <many-to-one name="monitoreoByCarrera" class="com.generado.Monitoreo" fetch="select">
+            <column name="carrera" unique="true" />
+        </many-to-one>
+        <many-to-one name="unidad" class="com.generado.Unidad" fetch="select">
+            <column name="unidad" />
+        </many-to-one>
+        <many-to-one name="monitoreoByError" class="com.generado.Monitoreo" fetch="select">
+            <column name="error" unique="true" />
+        </many-to-one>
+        <many-to-one name="monitoreoByUltimoreg" class="com.generado.Monitoreo" fetch="select">
+            <column name="ultimoreg" unique="true" />
+        </many-to-one>
+        <many-to-one name="fosUserByUserCancel" class="com.generado.FosUser" fetch="select">
+            <column name="user_cancel" />
+        </many-to-one>
+        <many-to-one name="fosUserByCliente" class="com.generado.FosUser" fetch="select">
+            <column name="cliente" />
+        </many-to-one>
+        <many-to-one name="monitoreoByAsignacion" class="com.generado.Monitoreo" fetch="select">
+            <column name="asignacion" unique="true" />
+        </many-to-one>
+        <many-to-one name="monitoreoByAborto" class="com.generado.Monitoreo" fetch="select">
+            <column name="aborto" unique="true" />
+        </many-to-one>
+        <property name="fechahora" type="timestamp">
+            <column name="fechahora" length="22" />
+        </property>
+        <property name="cedula" type="string">
+            <column name="cedula" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" />
+        </property>
+        <property name="latitud" type="java.lang.Double">
+            <column name="latitud" precision="17" scale="17" />
+        </property>
+        <property name="longitud" type="java.lang.Double">
+            <column name="longitud" precision="17" scale="17" />
+        </property>
+        <property name="principal" type="string">
+            <column name="principal" />
+        </property>
+        <property name="secundaria" type="string">
+            <column name="secundaria" />
+        </property>
+        <property name="adicional" type="string">
+            <column name="adicional" />
+        </property>
+        <property name="masinf" type="string">
+            <column name="masinf" />
+        </property>
+        <property name="mensaje" type="string">
+            <column name="mensaje" />
+        </property>
+        <property name="tiempollegada" type="java.lang.Double">
+            <column name="tiempollegada" precision="17" scale="17" />
+        </property>
+        <property name="cancelado" type="java.lang.Boolean">
+            <column name="cancelado" />
+        </property>
+        <property name="finalizado" type="java.lang.Boolean">
+            <column name="finalizado" />
+        </property>
+        <property name="motivoCancel" type="string">
+            <column name="motivo_cancel" />
+        </property>
+        <property name="fechahoraCancel" type="timestamp">
+            <column name="fechahora_cancel" length="22" />
+        </property>
+        <property name="duracion" type="java.lang.Double">
+            <column name="duracion" precision="17" scale="17" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" />
+        </property>
+        <set name="recorridos" table="recorrido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="despacho" />
+            </key>
+            <one-to-many class="com.generado.Recorrido" />
+        </set>
+    </class>
+</hibernate-mapping>

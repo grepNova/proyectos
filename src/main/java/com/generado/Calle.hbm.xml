@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Calle" table="calle">
+        <id name="idcalle" type="int">
+            <column name="idcalle" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="ciudad" class="com.generado.Ciudad" fetch="select">
+            <column name="codigciu" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" />
+        </property>
+        <property name="idzona" type="java.lang.Integer">
+            <column name="idzona" />
+        </property>
+        <set name="interseccionsForCallesec" table="interseccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="callesec" />
+            </key>
+            <one-to-many class="com.generado.Interseccion" />
+        </set>
+        <set name="interseccionsForCalleprin" table="interseccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="calleprin" />
+            </key>
+            <one-to-many class="com.generado.Interseccion" />
+        </set>
+    </class>
+</hibernate-mapping>

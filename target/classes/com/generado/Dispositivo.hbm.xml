@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Dispositivo" table="dispositivo">
+        <id name="iddispositivo" type="int">
+            <column name="iddispositivo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tipocomunicacion" class="com.generado.Tipocomunicacion" fetch="select">
+            <column name="tipocomunicacion" />
+        </many-to-one>
+        <many-to-one name="tipodispositivo" class="com.generado.Tipodispositivo" fetch="select">
+            <column name="tipodispositivo" />
+        </many-to-one>
+        <property name="codigo" type="string">
+            <column name="codigo" length="100" />
+        </property>
+        <property name="numero" type="string">
+            <column name="numero" length="100" />
+        </property>
+        <property name="dirip" type="string">
+            <column name="dirip" length="100" />
+        </property>
+        <property name="chip" type="string">
+            <column name="chip" length="100" />
+        </property>
+        <property name="imei" type="string">
+            <column name="imei" length="100" />
+        </property>
+        <property name="asignado" type="boolean">
+            <column name="asignado" not-null="true" />
+        </property>
+        <property name="habilitado" type="boolean">
+            <column name="habilitado" not-null="true" />
+        </property>
+        <set name="instalacions" table="instalacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dispositivo" />
+            </key>
+            <one-to-many class="com.generado.Instalacion" />
+        </set>
+        <set name="unidads" table="unidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dispositivo" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Unidad" />
+        </set>
+    </class>
+</hibernate-mapping>

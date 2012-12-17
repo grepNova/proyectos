@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Mensajes" table="mensajes">
+        <id name="idmensaje" type="int">
+            <column name="idmensaje" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="unidad" class="com.generado.Unidad" fetch="select">
+            <column name="unidad" />
+        </many-to-one>
+        <many-to-one name="fosUser" class="com.generado.FosUser" fetch="select">
+            <column name="usuario" />
+        </many-to-one>
+        <property name="destino" type="string">
+            <column name="destino" />
+        </property>
+        <property name="puerto" type="java.lang.Double">
+            <column name="puerto" precision="17" scale="17" />
+        </property>
+        <property name="texto" type="string">
+            <column name="texto" />
+        </property>
+        <property name="enviado" type="java.lang.Boolean">
+            <column name="enviado" />
+        </property>
+        <property name="fechahora" type="timestamp">
+            <column name="fechahora" length="22" />
+        </property>
+        <property name="tipoenvio" type="string">
+            <column name="tipoenvio" />
+        </property>
+        <property name="recibe" type="string">
+            <column name="recibe" />
+        </property>
+        <property name="recibido" type="timestamp">
+            <column name="recibido" length="22" />
+        </property>
+        <property name="mensaje" type="string">
+            <column name="mensaje" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.FosUser" table="fos_user">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" not-null="true" />
+        </property>
+        <property name="usernameCanonical" type="string">
+            <column name="username_canonical" not-null="true" unique="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" not-null="true" />
+        </property>
+        <property name="emailCanonical" type="string">
+            <column name="email_canonical" not-null="true" unique="true" />
+        </property>
+        <property name="enabled" type="boolean">
+            <column name="enabled" not-null="true" />
+        </property>
+        <property name="salt" type="string">
+            <column name="salt" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" not-null="true" />
+        </property>
+        <property name="lastLogin" type="timestamp">
+            <column name="last_login" length="22" />
+        </property>
+        <property name="locked" type="boolean">
+            <column name="locked" not-null="true" />
+        </property>
+        <property name="expired" type="boolean">
+            <column name="expired" not-null="true" />
+        </property>
+        <property name="expiresAt" type="timestamp">
+            <column name="expires_at" length="22" />
+        </property>
+        <property name="confirmationToken" type="string">
+            <column name="confirmation_token" />
+        </property>
+        <property name="passwordRequestedAt" type="timestamp">
+            <column name="password_requested_at" length="22" />
+        </property>
+        <property name="roles" type="string">
+            <column name="roles" not-null="true" />
+        </property>
+        <property name="credentialsExpired" type="boolean">
+            <column name="credentials_expired" not-null="true" />
+        </property>
+        <property name="credentialsExpireAt" type="timestamp">
+            <column name="credentials_expire_at" length="22" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="22" not-null="true" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="22" not-null="true" />
+        </property>
+        <property name="cedula" type="string">
+            <column name="cedula" length="13" unique="true" />
+        </property>
+        <property name="nombres" type="string">
+            <column name="nombres" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="22" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="22" not-null="true" />
+        </property>
+        <set name="emails" table="email" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" />
+            </key>
+            <one-to-many class="com.generado.Email" />
+        </set>
+        <set name="unidads" table="unidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="propietario" />
+            </key>
+            <one-to-many class="com.generado.Unidad" />
+        </set>
+        <set name="mensajeses" table="mensajes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" />
+            </key>
+            <one-to-many class="com.generado.Mensajes" />
+        </set>
+        <set name="despachosForCliente" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cliente" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="instalacions" table="instalacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="instalador" />
+            </key>
+            <one-to-many class="com.generado.Instalacion" />
+        </set>
+        <set name="telefonos" table="telefono" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" />
+            </key>
+            <one-to-many class="com.generado.Telefono" />
+        </set>
+        <set name="despachosForUsuario" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+        <set name="celulars" table="celular" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" />
+            </key>
+            <one-to-many class="com.generado.Celular" />
+        </set>
+        <set name="fosGroups" table="fos_user_group" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.generado.FosGroup">
+                <column name="group_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="direccions" table="direccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" />
+            </key>
+            <one-to-many class="com.generado.Direccion" />
+        </set>
+        <set name="propietarios" table="propietario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" unique="true" />
+            </key>
+            <one-to-many class="com.generado.Propietario" />
+        </set>
+        <set name="despachosForUserCancel" table="despacho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_cancel" />
+            </key>
+            <one-to-many class="com.generado.Despacho" />
+        </set>
+    </class>
+</hibernate-mapping>

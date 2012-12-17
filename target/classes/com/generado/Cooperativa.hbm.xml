@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Cooperativa" table="cooperativa">
+        <id name="idcooperativa" type="int">
+            <column name="idcooperativa" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" />
+        </property>
+        <property name="representanteLegal" type="string">
+            <column name="representante_legal" length="100" />
+        </property>
+        <property name="ruc" type="string">
+            <column name="ruc" length="13" />
+        </property>
+        <property name="idempresa" type="java.lang.Long">
+            <column name="idempresa" />
+        </property>
+        <property name="slug" type="string">
+            <column name="slug" length="128" not-null="true" unique="true" />
+        </property>
+        <property name="opciones" type="string">
+            <column name="opciones" />
+        </property>
+        <set name="unidads" table="unidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcooperativa" />
+            </key>
+            <one-to-many class="com.generado.Unidad" />
+        </set>
+        <set name="institucions" table="institucion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cooperativa" />
+            </key>
+            <one-to-many class="com.generado.Institucion" />
+        </set>
+    </class>
+</hibernate-mapping>

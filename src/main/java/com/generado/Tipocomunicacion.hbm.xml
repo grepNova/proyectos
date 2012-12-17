@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Tipocomunicacion" table="tipocomunicacion">
+        <id name="idtipocomunicacion" type="int">
+            <column name="idtipocomunicacion" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" />
+        </property>
+        <set name="dispositivos" table="dispositivo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tipocomunicacion" />
+            </key>
+            <one-to-many class="com.generado.Dispositivo" />
+        </set>
+        <set name="enviocomandos" table="enviocomando" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tipocomunicacion" />
+            </key>
+            <one-to-many class="com.generado.Enviocomando" />
+        </set>
+    </class>
+</hibernate-mapping>

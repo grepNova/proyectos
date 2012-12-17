@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Instalacion" table="instalacion">
+        <id name="idinstalacion" type="int">
+            <column name="idinstalacion" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="fosUser" class="com.generado.FosUser" fetch="select">
+            <column name="instalador" />
+        </many-to-one>
+        <many-to-one name="unidad" class="com.generado.Unidad" fetch="select">
+            <column name="idunidad" />
+        </many-to-one>
+        <many-to-one name="dispositivo" class="com.generado.Dispositivo" fetch="select">
+            <column name="dispositivo" />
+        </many-to-one>
+        <property name="fechahora" type="timestamp">
+            <column name="fechahora" length="22" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="22" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="22" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

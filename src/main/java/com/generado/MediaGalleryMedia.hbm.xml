@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.MediaGalleryMedia" table="media__gallery_media">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="mediaGallery" class="com.generado.MediaGallery" fetch="select">
+            <column name="gallery_id" />
+        </many-to-one>
+        <many-to-one name="mediaMedia" class="com.generado.MediaMedia" fetch="select">
+            <column name="media_id" />
+        </many-to-one>
+        <property name="position" type="int">
+            <column name="position" not-null="true" />
+        </property>
+        <property name="enabled" type="boolean">
+            <column name="enabled" not-null="true" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="22" not-null="true" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="22" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

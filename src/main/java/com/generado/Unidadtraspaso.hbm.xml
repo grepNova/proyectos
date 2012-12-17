@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-dic-2012 20:33:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.generado.Unidadtraspaso" table="unidadtraspaso">
+        <id name="idunidad" type="int">
+            <column name="idunidad" />
+            <generator class="assigned" />
+        </id>
+        <property name="zocodins" type="java.lang.Integer">
+            <column name="zocodins" />
+        </property>
+        <property name="zocodunicoop" type="java.lang.Integer">
+            <column name="zocodunicoop" />
+        </property>
+        <property name="zocoduni" type="java.lang.Integer">
+            <column name="zocoduni" />
+        </property>
+        <property name="zofecins" type="timestamp">
+            <column name="zofecins" length="22" />
+        </property>
+        <property name="zoestunidad" type="string">
+            <column name="zoestunidad" length="5" />
+        </property>
+        <property name="zoestservicio" type="string">
+            <column name="zoestservicio" length="5" />
+        </property>
+        <property name="zoestcarrera" type="string">
+            <column name="zoestcarrera" length="5" />
+        </property>
+        <property name="zoestmecanica" type="string">
+            <column name="zoestmecanica" length="5" />
+        </property>
+        <property name="zocomere" type="string">
+            <column name="zocomere" length="5" />
+        </property>
+        <property name="zocodciudad" type="java.lang.Integer">
+            <column name="zocodciudad" />
+        </property>
+        <property name="zocodzon" type="java.lang.Integer">
+            <column name="zocodzon" />
+        </property>
+        <property name="zodesuni" type="string">
+            <column name="zodesuni" />
+        </property>
+        <property name="zoplacas" type="string">
+            <column name="zoplacas" />
+        </property>
+        <property name="zonumdis" type="string">
+            <column name="zonumdis" />
+        </property>
+        <property name="zonumpas" type="java.lang.Integer">
+            <column name="zonumpas" />
+        </property>
+        <property name="zomarfac" type="java.lang.Integer">
+            <column name="zomarfac" />
+        </property>
+        <property name="zotipmar" type="string">
+            <column name="zotipmar" />
+        </property>
+        <property name="zotipcla" type="string">
+            <column name="zotipcla" />
+        </property>
+        <property name="zotipveh" type="string">
+            <column name="zotipveh" />
+        </property>
+        <property name="zoanofab" type="java.lang.Integer">
+            <column name="zoanofab" />
+        </property>
+        <property name="zomodelo" type="string">
+            <column name="zomodelo" />
+        </property>
+        <property name="zopaisor" type="string">
+            <column name="zopaisor" />
+        </property>
+        <property name="zonummot" type="string">
+            <column name="zonummot" />
+        </property>
+        <property name="zonumcha" type="string">
+            <column name="zonumcha" />
+        </property>
+        <property name="zocolore" type="string">
+            <column name="zocolore" />
+        </property>
+        <property name="zootrinf" type="string">
+            <column name="zootrinf" />
+        </property>
+        <property name="zonomdue" type="string">
+            <column name="zonomdue" />
+        </property>
+        <property name="zodirdue" type="string">
+            <column name="zodirdue" />
+        </property>
+        <property name="zoceldue" type="string">
+            <column name="zoceldue" />
+        </property>
+        <property name="zoteldue" type="string">
+            <column name="zoteldue" />
+        </property>
+        <property name="zonumtel" type="string">
+            <column name="zonumtel" />
+        </property>
+        <property name="zopuerto" type="string">
+            <column name="zopuerto" />
+        </property>
+        <property name="zocoddis" type="string">
+            <column name="zocoddis" />
+        </property>
+        <property name="zofeceve" type="timestamp">
+            <column name="zofeceve" length="22" />
+        </property>
+        <property name="zolatitud" type="java.lang.Double">
+            <column name="zolatitud" precision="17" scale="17" />
+        </property>
+        <property name="zolongitud" type="java.lang.Double">
+            <column name="zolongitud" precision="17" scale="17" />
+        </property>
+        <property name="zoveloci" type="java.lang.Integer">
+            <column name="zoveloci" />
+        </property>
+        <property name="zopuncon" type="java.lang.Integer">
+            <column name="zopuncon" />
+        </property>
+        <property name="zocoluni" type="java.lang.Integer">
+            <column name="zocoluni" />
+        </property>
+        <property name="zomareme" type="java.lang.Integer">
+            <column name="zomareme" />
+        </property>
+        <property name="zofeceme" type="timestamp">
+            <column name="zofeceme" length="22" />
+        </property>
+        <property name="zohoreme" type="string">
+            <column name="zohoreme" length="8" />
+        </property>
+        <property name="zonumime" type="string">
+            <column name="zonumime" />
+        </property>
+        <property name="zonumchi" type="string">
+            <column name="zonumchi" />
+        </property>
+        <property name="zomarina" type="java.lang.Integer">
+            <column name="zomarina" />
+        </property>
+        <property name="zocodrut" type="string">
+            <column name="zocodrut" length="1" />
+        </property>
+        <property name="zohorsal" type="string">
+            <column name="zohorsal" length="8" />
+        </property>
+        <property name="zofecevev" type="timestamp">
+            <column name="zofecevev" length="22" />
+        </property>
+        <property name="zonumvue" type="java.lang.Integer">
+            <column name="zonumvue" />
+        </property>
+        <property name="zocodsec" type="java.lang.Integer">
+            <column name="zocodsec" />
+        </property>
+        <property name="zopassub" type="java.lang.Integer">
+            <column name="zopassub" />
+        </property>
+        <property name="zopasbaj" type="java.lang.Integer">
+            <column name="zopasbaj" />
+        </property>
+        <property name="zopasabo" type="java.lang.Integer">
+            <column name="zopasabo" />
+        </property>
+        <property name="sicodusu" type="java.lang.Integer">
+            <column name="sicodusu" />
+        </property>
+        <property name="sifecreg" type="timestamp">
+            <column name="sifecreg" length="22" />
+        </property>
+    </class>
+</hibernate-mapping>
