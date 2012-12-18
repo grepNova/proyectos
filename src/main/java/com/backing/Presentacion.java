@@ -32,6 +32,7 @@ public class Presentacion {
 		
 		
 		if (coopHome == null) {
+			//nuevo 
 			coopHome = new ColasHome();
 		}	
 
