@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-#Omitir el .classpath
-.classpath
-build/*
-.settings/*
-=======
 #Omitir el .classpath
 .classpath
 build/*
 .settings/*
 target/m2e-wtp/web-resources/META-INF/maven/*
-
->>>>>>> 64da96620048c51019adfe6be9b9651cffca0d8f
