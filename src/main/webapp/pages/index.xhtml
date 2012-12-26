@@ -3,20 +3,84 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"> 
-	
+	xmlns:p="http://primefaces.org/ui">
 
- <h:head><title>My Monitoreo</title></h:head>
+
+<h:head>
+	<title>My Monitoreo</title>
+</h:head>
 <h:body>
 
-	<p:dataTable id="tblNormativaHead" border="2" var="coop"
-		value="#{presentacion.colas}">
-		<p:column>
-			<f:facet name="header">Codigo</f:facet>
-			<h:outputText value="#{coop[0]}" />
-		</p:column>
+	<h:form id="tblNormativaHead">
+		<p:dataTable  border="2" var="coop"  selection="#{presentacion.seleccionados}"
+			value="#{presentacion.listaData}"  rowKey="#{coop.idunidad}" >
+			
+			<p:column selectionMode="multiple" style="width:18px" />
 
-	</p:dataTable>
+			<p:column sortBy="#{coop.idunidad}">
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{coop.idunidad}" />
+			</p:column>
+			<p:column sortBy="#{coop.codigounidad}">
+				<f:facet name="header">Codigo</f:facet>
+				<h:outputText value="#{coop.codigounidad}" />
+			</p:column>
+			<p:column sortBy="#{coop.fechahora}">
+				<f:facet name="header">Fecha</f:facet>
+				<h:outputText value="#{coop.fechahora}" />
+			</p:column>
+			<p:column sortBy="#{coop.velocidad}">
+				<f:facet name="header">Codigo</f:facet>
+				<h:outputText value="#{coop.velocidad}" />
+			</p:column>
+			<p:column sortBy="#{coop.provincia}">
+				<f:facet name="header">Codigo</f:facet>
+				<h:outputText value="#{coop.provincia}" />
+			</p:column>
+			<p:column sortBy="#{coop.ciudad}">
+				<f:facet name="header">Codigo</f:facet>
+				<h:outputText value="#{coop.ciudad}" />
+			</p:column>
+			<p:column sortBy="#{coop.calleprin}">
+				<f:facet name="header">Codigo</f:facet>
+				<h:outputText value="#{coop.calleprin}" />
+			</p:column>
+
+			<p:column sortBy="#{coop.callesec}">
+				<f:facet name="header">Codigo</f:facet>
+				<h:outputText value="#{coop.callesec}" />
+			</p:column>
+			
+			<p:column sortBy="#{coop.tipotrama}">
+				<f:facet name="header">Codigo</f:facet>
+				<h:outputText value="#{coop.tipotrama}" />
+			</p:column>
+
+			<p:column sortBy="#{coop.estadoequipo}">
+				<f:facet name="header">Codigo</f:facet>
+				<h:outputText value="#{coop.estadoequipo}" />
+			</p:column>
+
+		</p:dataTable>
+
+		<p:commandButton action="#{presentacion.llenaTabla()}"
+			value="Actualizar" update="tblNormativaHead" />
+
+		<p:commandButton id="multiViewButton" value="View"
+			icon="ui-icon-search" update="displayMulti"
+			oncomplete="multiCarDialog.show()" />
+
+		<p:dialog id="multiDialog" header="Car Detail"
+			widgetVar="multiCarDialog" height="300" showEffect="fade"
+			hideEffect="explode">
+
+			<p:dataList id="displayMulti" value="#{presentacion.seleccionados}"
+				var="selec">  
+            Iduni: #{selec.idunidad}, IP: #{selec.direccionip} 
+        </p:dataList>
+
+		</p:dialog>
+	</h:form>
 
 </h:body>
-</html> 
+</html>

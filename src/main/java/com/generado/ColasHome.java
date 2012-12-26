@@ -9,6 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.type.AnyType;
+
+import com.view.UltimoregistroVista;
 
 
 /**
@@ -78,9 +81,45 @@ public class ColasHome {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Colas> getImportant() {
-		return entityManager.
-				createQuery("SELECT c.nombre, c.telefono FROM Colas c").getResultList();
+	public List<UltimoregistroVista> getIdUni() {
+		
+		//new UltimoregistroVista(
+//		idmonitoreo, idunidad, 
+//		codigounidad, fechahora, 
+//		latitud, longitud, 
+//		direccionip, velocidad, 
+//		calleprin, callesec, 
+//		provincia, ciudad, 
+//		tipotrama, 
+//		estadoequipo)
+		
+		List<UltimoregistroVista> sal =
+		
+		entityManager.
+				createQuery("SELECT New com.view.UltimoregistroVista(m.idmonitoreo, uni.idunidad, m.codigounidad, m.fecharegistro, m.latitud, m.longitud, m.direccionip, m.velocidad, cprin.nombre, csec.nombre, prv.nombre, ciu.nombre, tptr.descripcion, esteq.descripcion) FROM Monitoreo m inner join m.unidad as uni inner join m.tipotrama as tptr inner join m.estadoequipo as esteq inner join m.ultimoregistros as ur left outer join m.interseccions as itr left join itr.calleByCalleprin as cprin left join itr.calleByCallesec as csec left join csec.ciudad as ciu left join ciu.provincia as prv").getResultList();
+		
+		return sal;
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Object[]> getMonitoreo() {
+		
+		List salida = null;
+		
+		try {
+			salida = entityManager.
+					createQuery("" +
+			
+					"SELECT uni.idunidad, m.codigounidad as cod, m.fechahora, m.velocidad, m.direccionip, cprin.nombre, csec.nombre, ciu.nombre, prv.nombre, m.latitud as lat, m.longitud as lon  FROM Monitoreo m inner join m.unidad as uni inner join m.ultimoregistros as ur left outer join m.interseccions as itr left join itr.calleByCalleprin as cprin left join itr.calleByCallesec as csec left join csec.ciudad as ciu left join ciu.provincia as prv" +
+					
+						"").getResultList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return salida;
 		
 	}
 }
