@@ -10,6 +10,11 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import org.hibernate.type.AnyType;
+import org.primefaces.event.map.OverlaySelectEvent;  
+import org.primefaces.model.map.DefaultMapModel;  
+import org.primefaces.model.map.LatLng;  
+import org.primefaces.model.map.MapModel;  
+import org.primefaces.model.map.Marker;
 
 import com.generado.Colas;
 import com.generado.ColasHome;
@@ -40,6 +45,14 @@ public class Presentacion {
 	
 	private UltimoregistroVistaData listaData;
  	
+	private MapModel advancedModel;
+	
+	private Marker marker;  
+	
+	private double lati;
+	
+	private double longi;
+	
 	@PostConstruct
 	public void init() {
 		
@@ -48,29 +61,52 @@ public class Presentacion {
 			coopHome = new ColasHome();
 		}
 		
+		advancedModel = new DefaultMapModel();   
+        
 		llenaTabla();
 	}
 
 	public void llenaTabla(){
-	
-//		lista = new ArrayList<UltimoregistroVista>();  
-
-//		colas = coopHome.getMonitoreo();
-//		
-//		for (Object[] element : colas) {
-//			lista.add(new UltimoregistroVista( Integer.parseInt(element[0].toString())));
-//		}
 		
 		othlista = coopHome.getIdUni();
 		
 		listaData = new UltimoregistroVistaData(othlista);
 		
-		
-		
-//		System.out.println(othlista);
-
 	}
 	
+	public void verMapa(){
+		
+		advancedModel = new DefaultMapModel(); 
+		
+		for (UltimoregistroVista elem : seleccionados) {
+			
+			lati = Double.parseDouble(elem.getLatitud());
+			longi = Double.parseDouble(elem.getLongitud());
+			
+			LatLng coord1 = new LatLng(Double.parseDouble(elem.getLatitud()), Double.parseDouble(elem.getLongitud())); 
+			
+			Marker mymarker = new Marker(coord1, String.valueOf(elem.getIdunidad()), elem.getIdunidad() );
+			
+			mymarker.setIcon("http://www.google.com/mapfiles/markerA.png");
+			
+			advancedModel.addOverlay(mymarker); 
+		}
+		
+		
+	}
+	
+    public void onMarkerSelect(OverlaySelectEvent event) {  
+        marker = (Marker) event.getOverlay();  
+    }
+    
+	public MapModel getAdvancedModel() {
+		return advancedModel;
+	}
+
+	public void setAdvancedModel(MapModel advancedModel) {
+		this.advancedModel = advancedModel;
+	}
+
 	public UltimoregistroVista[] getSeleccionados() {
 		return seleccionados;
 	}
@@ -119,6 +155,30 @@ public class Presentacion {
 
 	public void setCoopHome(ColasHome coopHome) {
 		this.coopHome = coopHome;
+	}
+
+	public Marker getMarker() {
+		return marker;
+	}
+
+	public void setMarker(Marker marker) {
+		this.marker = marker;
+	}
+
+	public double getLati() {
+		return lati;
+	}
+
+	public void setLati(double lati) {
+		this.lati = lati;
+	}
+
+	public double getLongi() {
+		return longi;
+	}
+
+	public void setLongi(double longi) {
+		this.longi = longi;
 	}
 
 
