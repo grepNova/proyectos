@@ -7,6 +7,7 @@
 
 
 <h:head>
+	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
 	<title>My Monitoreo</title>
 </h:head>
 <h:body>
@@ -66,20 +67,29 @@
 		<p:commandButton action="#{presentacion.llenaTabla()}"
 			value="Actualizar" update="tblNormativaHead" />
 
-		<p:commandButton id="multiViewButton" value="View"
-			icon="ui-icon-search" update="displayMulti"
-			oncomplete="multiCarDialog.show()" />
+		<p:commandButton id="verMapa" value="Ver Mapa" icon="ui-icon-search"
+			update="divMapa" action="#{presentacion.verMapa()}" />
 
-		<p:dialog id="multiDialog" header="Car Detail"
-			widgetVar="multiCarDialog" height="300" showEffect="fade"
-			hideEffect="explode">
 
-			<p:dataList id="displayMulti" value="#{presentacion.seleccionados}"
-				var="selec">  
-            Iduni: #{selec.idunidad}, IP: #{selec.direccionip} 
-        </p:dataList>
+		<p:gmap id="divMapa" center="#{presentacion.lati},#{presentacion.longi}" zoom="15"
+			fitBounds="true"
+			streetView="true"
+			type="HYBRID" model="#{presentacion.advancedModel}"
+			style="width:600px;height:400px">
 
-		</p:dialog>
+			<p:ajax event="overlaySelect" listener="#{presentacion.onMarkerSelect}" />
+
+			<p:gmapInfoWindow>
+				<p:outputPanel style="text-align:center;display:block;margin:auto:">
+
+					<h:outputText value="#{presentacion.marker.data}" />
+
+				</p:outputPanel>
+
+			</p:gmapInfoWindow>
+
+		</p:gmap>
+
 	</h:form>
 
 </h:body>
