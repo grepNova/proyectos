@@ -96,7 +96,7 @@ public class ColasHome {
 		List<UltimoregistroVista> sal =
 		
 		entityManager.
-				createQuery("SELECT New com.view.UltimoregistroVista(m.idmonitoreo, uni.idunidad, m.codigounidad, m.fecharegistro, m.latitud, m.longitud, m.direccionip, m.velocidad, cprin.nombre, csec.nombre, prv.nombre, ciu.nombre, tptr.descripcion, esteq.descripcion) FROM Monitoreo m inner join m.unidad as uni inner join m.tipotrama as tptr inner join m.estadoequipo as esteq inner join m.ultimoregistros as ur left outer join m.interseccions as itr left join itr.calleByCalleprin as cprin left join itr.calleByCallesec as csec left join csec.ciudad as ciu left join ciu.provincia as prv").getResultList();
+				createQuery("SELECT New com.view.UltimoregistroVista(m.idmonitoreo, uni.idunidad, m.codigounidad, m.fecharegistro, m.latitud, m.longitud, m.direccionip, m.velocidad, cprin.nombre, csec.nombre, prv.nombre, ciu.nombre, tptr.descripcion, esteq.descripcion) FROM Monitoreo m inner join m.unidad as uni inner join m.tipotrama as tptr inner join m.estadoequipo as esteq inner join m.ultimoregistros as ur left outer join m.interseccions as itr left join itr.calleByCalleprin as cprin left join itr.calleByCallesec as csec left join csec.ciudad as ciu left join ciu.provincia as prv where esteq.codigo = 1 ").getResultList();
 		
 		return sal;
 		
