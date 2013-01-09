@@ -7,90 +7,195 @@
 
 
 <h:head>
-	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
+	<script src="http://maps.google.com/maps/api/js?sensor=false"
+		type="text/javascript"></script>
 	<title>My Monitoreo</title>
 </h:head>
 <h:body>
 
 	<h:form id="tblNormativaHead">
-		<p:dataTable  border="2" var="coop"  selection="#{presentacion.seleccionados}"
-			value="#{presentacion.listaData}"  rowKey="#{coop.idunidad}" >
-			
-			<p:column selectionMode="multiple" style="width:18px" />
 
-			<p:column sortBy="#{coop.idunidad}">
-				<f:facet name="header">ID</f:facet>
-				<h:outputText value="#{coop.idunidad}" />
-			</p:column>
-			<p:column sortBy="#{coop.codigounidad}">
-				<f:facet name="header">Codigo</f:facet>
-				<h:outputText value="#{coop.codigounidad}" />
-			</p:column>
-			<p:column sortBy="#{coop.fechahora}">
-				<f:facet name="header">Fecha</f:facet>
-				<h:outputText value="#{coop.fechahora}" />
-			</p:column>
-			<p:column sortBy="#{coop.velocidad}">
-				<f:facet name="header">Codigo</f:facet>
-				<h:outputText value="#{coop.velocidad}" />
-			</p:column>
-			<p:column sortBy="#{coop.provincia}">
-				<f:facet name="header">Codigo</f:facet>
-				<h:outputText value="#{coop.provincia}" />
-			</p:column>
-			<p:column sortBy="#{coop.ciudad}">
-				<f:facet name="header">Codigo</f:facet>
-				<h:outputText value="#{coop.ciudad}" />
-			</p:column>
-			<p:column sortBy="#{coop.calleprin}">
-				<f:facet name="header">Codigo</f:facet>
-				<h:outputText value="#{coop.calleprin}" />
-			</p:column>
+		<p:tabView id="tabView" widgetVar="widgetTab">
 
-			<p:column sortBy="#{coop.callesec}">
-				<f:facet name="header">Codigo</f:facet>
-				<h:outputText value="#{coop.callesec}" />
-			</p:column>
-			
-			<p:column sortBy="#{coop.tipotrama}">
-				<f:facet name="header">Codigo</f:facet>
-				<h:outputText value="#{coop.tipotrama}" />
-			</p:column>
-
-			<p:column sortBy="#{coop.estadoequipo}">
-				<f:facet name="header">Codigo</f:facet>
-				<h:outputText value="#{coop.estadoequipo}" />
-			</p:column>
-
-		</p:dataTable>
-
-		<p:commandButton action="#{presentacion.llenaTabla()}"
-			value="Actualizar" update="tblNormativaHead" />
-
-		<p:commandButton id="verMapa" value="Ver Mapa" icon="ui-icon-search"
-			update="divMapa" action="#{presentacion.verMapa()}" />
+			<p:tab id="tab1" title="Unidades">
 
 
-		<p:gmap id="divMapa" center="#{presentacion.lati},#{presentacion.longi}" zoom="15"
-			fitBounds="true"
-			streetView="true"
-			type="HYBRID" model="#{presentacion.advancedModel}"
-			style="width:600px;height:400px">
+				<h:panelGrid columns="2" cellpadding="10">
 
-			<p:ajax event="overlaySelect" listener="#{presentacion.onMarkerSelect}" />
+					<h:form>
 
-			<p:gmapInfoWindow>
-				<p:outputPanel style="text-align:center;display:block;margin:auto:">
+						<p:dataTable id="tableMonitoreo" border="2" var="coop"
+							style="font-size:.7em" selection="#{presentacion.seleccionados}"
+							value="#{presentacion.listaData}" rowKey="#{coop.idunidad}">
 
-					<h:outputText value="#{presentacion.marker.data}" />
+							<p:column selectionMode="multiple" style="width:18px" />
 
-				</p:outputPanel>
+							<p:column>
 
-			</p:gmapInfoWindow>
 
-		</p:gmap>
+
+								<p:commandButton id="dynaButton" value="Opciones" type="button" />
+								<p:tieredMenu overlay="true" trigger="dynaButton" my="left top"
+									at="left bottom">
+									<p:submenu label="Menu">
+										<p:menuitem value="Save" icon="ui-icon-disk">
+											<p:commandButton value="Ver Mapa" icon="ui-icon-search"
+												action="#{presentacion.mapaIndividual(coop)}"
+												onclick="widgetTab.select(1)"
+												update=":tblNormativaHead:tabView:divMapa" />
+
+										</p:menuitem>
+										<p:menuitem value="Save" icon="ui-icon-disk">
+											<p:commandButton value="Ver Mapa" icon="ui-icon-search"
+												action="#{presentacion.mapaIndividual(coop)}"
+												onclick="widgetTab.select(1)"
+												update=":tblNormativaHead:tabView:divMapa" />
+
+										</p:menuitem>
+									</p:submenu>
+
+								</p:tieredMenu>
+
+							</p:column>
+
+							<p:column sortBy="#{coop.idunidad}">
+								<f:facet name="header">ID</f:facet>
+								<h:outputText value="#{coop.idunidad}" />
+							</p:column>
+							<p:column sortBy="#{coop.codMuni}">
+								<f:facet name="header">Municipal</f:facet>
+								<h:outputText value="#{coop.codMuni}" />
+							</p:column>
+
+							<p:column sortBy="#{coop.codigounidad}">
+								<f:facet name="header">Codigo</f:facet>
+								<h:outputText value="#{coop.codigounidad}" />
+							</p:column>
+							<p:column sortBy="#{coop.fechahora}">
+								<f:facet name="header">Fecha</f:facet>
+								<h:outputText value="#{coop.fechahora}" />
+							</p:column>
+							<p:column sortBy="#{coop.velocidad}">
+								<f:facet name="header">Codigo</f:facet>
+								<h:outputText value="#{coop.velocidad}" />
+							</p:column>
+							<p:column sortBy="#{coop.provincia}">
+								<f:facet name="header">Codigo</f:facet>
+								<h:outputText value="#{coop.provincia}" />
+							</p:column>
+							<p:column sortBy="#{coop.ciudad}">
+								<f:facet name="header">Codigo</f:facet>
+								<h:outputText value="#{coop.ciudad}" />
+							</p:column>
+							<p:column sortBy="#{coop.calleprin}">
+								<f:facet name="header">Codigo</f:facet>
+								<h:outputText value="#{coop.calleprin}" />
+							</p:column>
+
+							<p:column sortBy="#{coop.callesec}">
+								<f:facet name="header">Codigo</f:facet>
+								<h:outputText value="#{coop.callesec}" />
+							</p:column>
+
+							<p:column sortBy="#{coop.tipotrama}">
+								<f:facet name="header">Trama</f:facet>
+								<p:commandButton value="#{coop.tipotrama}"
+									update="tableMonitoreo, :tblNormativaHead:dlgFiltro" 
+									action="#{presentacion.llenaFiltro()}"
+									oncomplete="dlg.show()"
+									>
+									<f:setPropertyActionListener target="#{presentacion.strWhere}"
+										value="where tptr.descripcion = '#{coop.tipotrama}'" />
+								</p:commandButton>
+
+							</p:column>
+
+							<p:column sortBy="#{coop.estadoequipo}">
+								<f:facet name="header">Equipo</f:facet>
+								<p:commandButton value="#{coop.estadoequipo}"
+									update="tableMonitoreo, :tblNormativaHead:dlgFiltro" 
+									action="#{presentacion.llenaFiltro()}"
+									oncomplete="dlg.show()"
+									>
+									<f:setPropertyActionListener target="#{presentacion.strWhere}"
+										value="where esteq.descripcion = '#{coop.estadoequipo}'" />
+								</p:commandButton>
+							</p:column>
+
+						</p:dataTable>
+
+						<p:commandButton action="#{presentacion.llenaTabla()}"
+							value="Actualizar" update="tableMonitoreo">
+							<f:setPropertyActionListener target="#{presentacion.strWhere}"
+								value="" />
+						</p:commandButton>
+					</h:form>
+
+
+
+				</h:panelGrid>
+				<p:commandButton id="verMapa" value="Ver Mapa" icon="ui-icon-search"
+					action="#{presentacion.verMapa()}" onclick="widgetTab.select(1)"
+					update=":tblNormativaHead:tabView:divMapa" />
+
+			</p:tab>
+
+			<p:tab id="tab2" title="Mapa">
+				<h:panelGrid columns="2" cellpadding="10">
+					<p:gmap id="divMapa" fitBounds="false"
+						center="#{presentacion.lati},#{presentacion.longi}" zoom="15"
+						streetView="true" type="ROADMAP"
+						model="#{presentacion.advancedModel}"
+						style="width:800px;height:600px">
+
+						<p:ajax event="overlaySelect"
+							listener="#{presentacion.onMarkerSelect}" />
+
+						<p:gmapInfoWindow>
+						
+						<h:outputText escape="false" value="#{presentacion.marker.data}"/>
+
+						</p:gmapInfoWindow>
+
+					</p:gmap>
+				</h:panelGrid>
+			</p:tab>
+
+
+		</p:tabView>
+
+
+		<p:dialog id="dlgFiltro" widgetVar="dlg" 
+			maximizable="true" style="overflow:auto;height: 90% !important">
+
+				<p:commandButton id="verMapaFilter" value="Ver Mapa" icon="ui-icon-search"
+					action="#{presentacion.verMapaFiltro()}" onclick="widgetTab.select(1); dlg.hide() "
+					update=":tblNormativaHead:tabView:divMapa" />
+					
+			<p:dataTable id="tableMonitoreoFiltro" border="2" var="coop"
+				style="font-size:.7em" selection="#{presentacion.seleccionadosFiltro}"
+				value="#{presentacion.listaDataFiltro}" rowKey="#{coop.idunidad}">
+
+				<p:column selectionMode="multiple" style="width:18px" />
+
+
+				<p:column sortBy="#{coop.callesec}">
+					<f:facet name="header">Codigo</f:facet>
+					<h:outputText value="#{coop.callesec}" />
+				</p:column>
+
+				<p:column sortBy="#{coop.callesec}">
+					<f:facet name="header">Equipo</f:facet>
+					<h:outputText value="#{coop.estadoequipo}" />
+				</p:column>
+
+			</p:dataTable>
+
+
+		</p:dialog>
 
 	</h:form>
+
 
 </h:body>
 </html>

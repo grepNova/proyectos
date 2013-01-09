@@ -32,6 +32,10 @@ public class UltimoregistroVista {
 	private String tipotrama;
 	private String estadoequipo;
 	
+	private String codMuni;
+	
+	private String alias;
+	
 	public UltimoregistroVista(int idunidad) {
 		this.idunidad = idunidad;
 	}
@@ -88,6 +92,7 @@ public class UltimoregistroVista {
 	 * @param estadoequipo
 	 */
 	public UltimoregistroVista(int idmonitoreo, int idunidad,
+			String codMuni, String alias,
 			Integer codigounidad, Date fechahora, String latitud,
 			String longitud, String direccionip, Double velocidad,
 			String calleprin, String callesec, String provincia, String ciudad,
@@ -95,6 +100,8 @@ public class UltimoregistroVista {
 		this.idmonitoreo = idmonitoreo;
 		this.idunidad = idunidad;
 		this.codigounidad = codigounidad;
+		this.codMuni = codMuni;
+		this.alias = alias;
 		this.fechahora = fechahora;
 		this.latitud = latitud;
 		this.longitud = longitud;
@@ -298,6 +305,22 @@ public class UltimoregistroVista {
 
 	public void setEstadoequipo(String estadoequipo) {
 		this.estadoequipo = estadoequipo;
+	}
+
+	public String getCodMuni() {
+		return codMuni;
+	}
+
+	public void setCodMuni(String codMuni) {
+		this.codMuni = codMuni;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 	
 	
