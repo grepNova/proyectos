@@ -7,7 +7,7 @@
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.password">mon2501</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://200.124.229.23:5432/mon2</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://186.69.64.154:5432/geomon</property>
         <property name="hibernate.connection.username">mon</property>
         <property name="hibernate.default_catalog">pg_catalog</property>
         <property name="hibernate.default_schema">public</property>

@@ -2,4 +2,4 @@
 .classpath
 build/*
 .settings/*
-target/*
+target/m2e-wtp/web-resources/META-INF/maven/*
